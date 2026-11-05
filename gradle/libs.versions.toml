@@ -8,6 +8,9 @@ appcompat = "1.8.0"
 material = "1.14.0"
 activityKtx = "1.13.0"
 constraintlayout = "2.2.2"
+gsonVersion = "2.15.0"
+kSerializationVersion="1.11.0"
+kSerializationPluginVersion="2.4.21"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -18,7 +21,10 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+gson = {group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion" }
+kserialization = {group="org.jetbrains.kotlinx", name="kotlinx-serialization-json", version.ref = "kSerializationVersion"}
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-
+kotlinx-serialization = {id= "org.jetbrains.kotlin.plugin.serialization", version.ref = "kSerializationPluginVersion"}

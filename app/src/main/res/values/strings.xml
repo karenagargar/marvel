@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MarvelApp</string>
+    <string name="local_source_superhero">local_source_superhero</string>
+    <string name="cache_source_name">cache_source_name</string>
 </resources>
