@@ -1,11 +1,8 @@
 package edu.iesam.marvelapp.features.superheroes.data.local.xml
 
 import android.content.Context
-import android.util.Log
-import edu.iesam.marvelapp.MainActivity
-import edu.iesam.marvelapp.R
-import edu.iesam.marvelapp.core.serialization.JsonSerializer
 import edu.iesam.marvelapp.core.cache.CacheTTL
+import edu.iesam.marvelapp.core.serialization.JsonSerializer
 import edu.iesam.marvelapp.features.superheroes.domain.SuperHero
 
 /**
@@ -32,7 +29,7 @@ class SuperHeroXmlLocalDataSource(private val context: Context, private val seri
 }*/
 class SuperHeroXmlLocalDataSource(
     private val context: Context,
-    private val serializer: JsonSerializer<List<SuperHero>>
+    private val serializer: JsonSerializer <List<SuperHero>>
 ) {
     companion object {
 
@@ -59,7 +56,7 @@ class SuperHeroXmlLocalDataSource(
     public fun findAll(): List<SuperHero> {
         val cacheIsExpired= cache.isExpired(keySuperHero,ttl)
         if (!cacheIsExpired){
-            Log.d(MainActivity::class.java.simpleName,cacheIsExpired.toString() )
+            //Log.d(MainActivity::class.java.simpleName,cacheIsExpired.toString() )
             val jsonList: String? = sharedPref.getString(keySuperHero,null) //coge p0 y si no existe el valor por defecto, p1
             jsonList?.let { //sustituimos así ifnull para que solo lo haga si es algo, no nulo, y podemos acceder a ello como it
                 return serializer.fromJson(it)
@@ -88,6 +85,14 @@ class SuperHeroXmlLocalDataSource(
             remove(keySuperHero)
             apply()
         }
+    }
+
+    fun update(superHero: SuperHero){
+        //porque no podemos modificar los datos, los hemos hecho val, solo podría si creara nuevo caso de uso
+        //superHeroes contiene todos los superHeroes EXCEPTO el que quiero modificar
+        val superHeroes = findAll().filterNot { it.id == superHero.id }.toMutableList()
+        superHeroes.add(superHero)
+        save(superHeroes)
     }
 
 }
