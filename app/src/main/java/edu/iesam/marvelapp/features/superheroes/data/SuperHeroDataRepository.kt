@@ -1,7 +1,6 @@
 package edu.iesam.marvelapp.features.superheroes.data
 
 import edu.iesam.marvelapp.features.superheroes.data.local.xml.SuperHeroXmlLocalDataSource
-import edu.iesam.marvelapp.features.superheroes.data.remote.mock.SuperHeroMockRemoteDataSource
 import edu.iesam.marvelapp.features.superheroes.domain.SuperHero
 import edu.iesam.marvelapp.features.superheroes.domain.SuperHeroRepository
 
